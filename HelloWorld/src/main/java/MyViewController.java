@@ -2,6 +2,8 @@
 
 import org.robovm.apple.coregraphics.CGRect;
 import org.robovm.apple.uikit.NSTextAlignment;
+import org.robovm.apple.uikit.UIAlertController;
+import org.robovm.apple.uikit.UIAlertControllerStyle;
 import org.robovm.apple.uikit.UIButton;
 import org.robovm.apple.uikit.UIButtonType;
 import org.robovm.apple.uikit.UIColor;
@@ -12,6 +14,7 @@ import org.robovm.apple.uikit.UIFont;
 import org.robovm.apple.uikit.UILabel;
 import org.robovm.apple.uikit.UIView;
 import org.robovm.apple.uikit.UIViewController;
+import org.robovm.apple.uikit.UIControl.OnTouchUpInsideListener;
 
 public class MyViewController extends UIViewController {
     private final UIButton button;
@@ -37,7 +40,27 @@ public class MyViewController extends UIViewController {
         button.setTitle("Click me!", UIControlState.Normal);
         button.getTitleLabel().setFont(UIFont.getBoldSystemFont(22));
 
-        button.addOnTouchUpInsideListener((control, event) -> label.setText("Click Nr. " + (++clickCount)));
+        button.addOnTouchUpInsideListener(new OnTouchUpInsideListener() {
+			
+			@Override
+			public void onTouchUpInside(UIControl arg0, UIEvent arg1) {
+				int click_count_tmp = ++clickCount;
+				label.setText("Click Nr. " + click_count_tmp);
+				displayToast("Click Nr. " + click_count_tmp);				
+			}
+		});
+
         view.addSubview(button);
+    }
+    /**
+     * Show toast message.
+     *
+     * @param message message to be displayed.
+     */
+    void displayToast(String message) {
+    	UIAlertController alert = new UIAlertController("Message!",message,UIAlertControllerStyle.Alert);
+    	presentViewController(alert, true, null);
+        
+    	alert.dismissViewController(true, null);
     }
 }
