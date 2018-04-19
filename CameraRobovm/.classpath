@@ -3,5 +3,7 @@
 	<classpathentry kind="con" path="org.robovm.eclipse.ROBOVM_CONTAINER"/>
 	<classpathentry kind="con" path="org.robovm.eclipse.ROBOVM_COCOA_TOUCH_CONTAINER"/>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="lib" path="/Users/nero/repositorios/samples-robovm/CameraRobovm/core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/nero/repositorios/samples-robovm/CameraRobovm/javase-3.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
