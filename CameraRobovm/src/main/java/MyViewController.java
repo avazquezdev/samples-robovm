@@ -70,6 +70,8 @@ public class MyViewController extends UIViewController {
 
 	private UIViewController cameraPreviewViewController;
 
+	UILabel resultLabel;
+	
 	public MyViewController() {
 		// Get the view of this view controller.
 		UIView view = getView();
@@ -113,12 +115,16 @@ public class MyViewController extends UIViewController {
 			}
 		} else
 			Foundation.log("No cameras.");
+		
+		resultLabel = new UILabel(new CGRect(0, 0, 500, 80));
+		resultLabel.setText("Test");	
+		resultLabel.setFont(UIFont.getSystemFont(24));
+		view.addSubview(resultLabel);
 	}
 
 	public class CameraMobileViewAdapterImpl {
 
 		private final UIView view;
-		private final UILabel resultLabel;
 		private AVCaptureVideoPreviewLayer previewLayer;
 		private AVCaptureSession session;
 		private AVCaptureDevice cameraDevice;
@@ -128,8 +134,7 @@ public class MyViewController extends UIViewController {
 
 		public CameraMobileViewAdapterImpl(UIView view) {
 			this.view = view;
-			resultLabel = new UILabel(new CGRect(0, 0, 500, 80));
-			resultLabel.setText("Test");		}
+	}
 
 		private boolean initializeCameraDevice() {
 			cameraDevice = AVCaptureDevice.getDefaultDeviceForMediaType(AVMediaType.Video);
@@ -188,7 +193,7 @@ public class MyViewController extends UIViewController {
 			videoDataOutput.setSampleBufferDelegate(new BufferDelegate(), queue);
 
 			captureMetadataOutput = new AVCaptureMetadataOutput();
-			captureDelegate = new CaptureMetadataOutputDelegate(resultLabel);
+			captureDelegate = new CaptureMetadataOutputDelegate(view);
 	        captureMetadataOutput.setMetadataObjectsDelegate(captureDelegate, queue);
 
 	        
@@ -198,7 +203,7 @@ public class MyViewController extends UIViewController {
 			videoDataOutput.setPixelBufferSettings(attributes);
 
 			session = new AVCaptureSession();
-			session.addOutput(videoDataOutput);
+			//session.addOutput(videoDataOutput);
 			session.addInput(input);
 			session.setSessionPreset(AVCaptureSessionPreset.Size640x480);
 
@@ -215,8 +220,6 @@ public class MyViewController extends UIViewController {
 			connection.setVideoOrientation(AVCaptureVideoOrientation.LandscapeRight);
 
 			view.getLayer().addSublayer(previewLayer);
-			resultLabel.setText("Alog");
-			view.getLayer().addSublayer(resultLabel.getLayer());
 			session.startRunning();
 
 		}
@@ -312,11 +315,10 @@ public class MyViewController extends UIViewController {
 	}
 
 	private class CaptureMetadataOutputDelegate extends AVCaptureMetadataOutputObjectsDelegateAdapter {
-		//private IOSQRCodeScanner qrCodeScanner;
-		private final UILabel label;
-		public CaptureMetadataOutputDelegate(UILabel label) {
-		//	this.qrCodeScanner = IOSQRCodeScanner.this;
-			this.label= label;
+		private final UIView view;
+		public CaptureMetadataOutputDelegate(UIView view) {
+			this.view= view;
+
 		}
 
 		@Override
@@ -324,12 +326,12 @@ public class MyViewController extends UIViewController {
 				AVCaptureConnection connection) {
 			if (metadataObjects != null && metadataObjects.size() > 0) {
 				AVMetadataObject data = metadataObjects.get(0);
-				//data.getKeyValueCoder().getValues("stringValue");
 				if (data.getType() == AVMetadataObjectType.QRCode) {
 					// Found QR Code TODO - change data.toString()
-					//qrCodeScanner.onCodeScanned(data.toString());
 					Foundation.log("Code: " + data.getKeyValueCoder().getValues("stringValue").toString());
-					label.setText(data.getKeyValueCoder().getValues("stringValue").toString());
+					//label.setText(data.getKeyValueCoder().getValues("stringValue").toString());
+					resultLabel.setText(data.getKeyValueCoder().getValues("stringValue").get("stringValue").toString());
+					view.addSubview(resultLabel);
 				}
 
 				metadataObjects.dispose();
