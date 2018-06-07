@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mobidevelop.robovm:robovm-objc:2.3.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mobidevelop/robovm/robovm-objc/2.3.4-SNAPSHOT/robovm-objc-2.3.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mobidevelop/robovm/robovm-objc/2.3.4-SNAPSHOT/robovm-objc-2.3.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
