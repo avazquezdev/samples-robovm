@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mobidevelop.robovm:robovm-cocoatouch:2.3.5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mobidevelop/robovm/robovm-cocoatouch/2.3.5/robovm-cocoatouch-2.3.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

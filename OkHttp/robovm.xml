@@ -1,0 +1,33 @@
+<config>
+    <executableName>${app.executable}</executableName>
+    <mainClass>${app.mainclass}</mainClass>
+    <os>ios</os>    
+    <target>ios</target>
+    <iosInfoPList>Info.plist.xml</iosInfoPList>
+    <resources>
+        <resource>
+            <directory>resources</directory>
+        </resource>
+    </resources>
+    <forceLinkClasses>
+        <!-- these are needed for Storage -->
+        <pattern>SQLite.JDBCDriver</pattern>
+        <pattern>SQLite.JDBC2z.JDBCConnection</pattern>
+        <!-- these are needed for WebSocket support in Net -->
+        <pattern>android.net.Network</pattern>
+        <!--<pattern>android.net.http.X509TrustManagerExtensions</pattern>-->
+        <pattern>com.android.org.conscrypt.OpenSSLProvider</pattern>
+        <pattern>org.apache.harmony.security.provider.cert.DRLCertFactory</pattern>
+        <pattern>com.android.org.bouncycastle.jce.provider.BouncyCastleProvider</pattern>
+        <pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
+        <pattern>com.android.org.conscrypt.JSSEProvider</pattern>
+        <pattern>com.android.org.conscrypt.OpenSSLMessageDigestJDK$SHA1</pattern>
+        <pattern>com.android.org.conscrypt.OpenSSLX509CertificateFactory</pattern>
+        <pattern>com.android.org.bouncycastle.jce.provider.PKIXCertPathValidatorSpi</pattern>
+        <pattern>com.android.org.bouncycastle.**</pattern>
+        <pattern>org.apache.harmony.xnet.provider.jsse.**</pattern>
+        <pattern>org.apache.harmony.security.**</pattern>
+        <pattern>com.android.org.conscrypt.OpenSSLRandom</pattern>
+        <pattern>com.android.org.conscrypt.OpenSSLMessageDigestJDK$MD5</pattern>
+    </forceLinkClasses>
+</config>
