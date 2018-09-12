@@ -28,8 +28,8 @@ robovm {
 }
 
 dependencies {
-    compile "com.mobidevelop.robovm:robovm-rt:${roboVMVersion}"
-    compile "com.mobidevelop.robovm:robovm-cocoatouch:${roboVMVersion}"
+    implementation "com.mobidevelop.robovm:robovm-rt:${roboVMVersion}"
+    implementation "com.mobidevelop.robovm:robovm-cocoatouch:${roboVMVersion}"
     testCompile "junit:junit:4.12"
 }
 
