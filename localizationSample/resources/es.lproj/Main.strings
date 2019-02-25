@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Language:"; ObjectID = "23a-Yk-1Cv"; */
+"23a-Yk-1Cv.text" = "Idioma:";
+
+/* Class = "UILabel"; text = "Dolar"; ObjectID = "JmL-0c-nPy"; */
+"JmL-0c-nPy.text" = "Dolar";
+
+/* Class = "UILabel"; text = "Text:"; ObjectID = "MJm-1x-FxH"; */
+"MJm-1x-FxH.text" = "Texto:";
+
+/* Class = "UILabel"; text = "Currency:"; ObjectID = "ZeA-a1-mW0"; */
+"ZeA-a1-mW0.text" = "Moneda:";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "uqM-MN-NZV"; */
+"uqM-MN-NZV.text" = "English";
+
+/* Class = "UILabel"; text = "Hello"; ObjectID = "xCG-mv-5Lm"; */
+"xCG-mv-5Lm.text" = "Hello";
